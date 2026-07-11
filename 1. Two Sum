@@ -1,0 +1,18 @@
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
+    *returnSize=2; //리턴값 정수 2개 들어가므로 사이즈 2
+    int *output=(int*)malloc(sizeof(int)*(*returnSize)); //동적할당 사용 1차원 배열 생성
+
+    for(int i=0;i<numsSize-1;i++){ //여기서 nums의 사이즈가 제공되므로 반복문에 사용
+        for(int j=i+1;j<numsSize;j++){ 
+            if(nums[i]+nums[j]==target){ //반복문 사용 target과 일치하는 nums합 구함
+                output[0]=i;
+                output[1]=j;
+                return output;
+            }
+        }
+    }
+    return NULL; // int* twoSum의 함수는 리턴값 필요하므로 꼭 작성 안하면 error
+}
