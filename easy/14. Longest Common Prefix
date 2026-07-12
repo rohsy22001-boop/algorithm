@@ -1,0 +1,22 @@
+//문자열 200개까지 입력받는다는걸 인지해야함
+
+char* longestCommonPrefix(char** strs, int strsSize) {
+    if (strsSize == 0) {
+        return ""; //문자열에 입력된거 없으면 실행
+    }
+    
+    char* out = strs[0]; //strs의 1번째 문자열을 기준으로 삼음
+    
+    for (int i = 0; out[i] != '\0'; i++) {
+        char ch = out[i]; //첫번째 문자열을 기준으로 비교할 문자를 [i]부분부터 추출함
+        
+        for (int j = 1; j < strsSize; j++) { 
+            if (strs[j][i] == '\0' || strs[j][i] != ch) { //문자의 끝에 도달하거나 비교결과가 false라면 비교과정을 끝냄
+                out[i] = '\0'; //문자열 out을 자름
+                return out;
+            }
+        }
+    }
+    
+    return out; //입력받은 strs가 모두일치하면 위 if문이 실행되지 않으므로 return 값 out
+}
