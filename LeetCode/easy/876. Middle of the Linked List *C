@@ -1,0 +1,19 @@
+struct ListNode* middleNode(struct ListNode* head) {
+    struct ListNode* pcnt=head; //head의 포인터 값을 복사해옴
+    struct ListNode* middle=NULL; //중간값을 가리킬 노드포인터 생성
+
+    int i=0; //노드 수를 셀 i 생성
+
+    while(pcnt!=NULL){ //pcnt값을 셈
+        i++;
+        pcnt=pcnt->next;
+    }
+    i=i/2; //중간값의 i계산
+    while(i!=0){ //head를 중간 노드로 설정
+        head=head->next;
+        i--;
+    }
+    middle=head; //중간노드로 설정된 head를 middle에 넣음
+    
+    return middle;
+}
