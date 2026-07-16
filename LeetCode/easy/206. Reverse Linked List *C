@@ -1,0 +1,15 @@
+struct ListNode* reverseList(struct ListNode* head) {
+    //각 이전 현재 다음을 저장할 노드를 생성
+    struct ListNode* next=NULL; 
+    struct ListNode* curr=head;
+    struct ListNode* prev=NULL;
+
+    while(curr!=NULL){ 
+        next=curr->next; //next값을 저장
+        curr->next=prev; //curr의 다음 값을 prev로 지정
+        prev=curr; // prev 값을 curr로 지정
+        curr=next; //저장해뒀던 next값을 curr값으로 지정
+    }
+//현재의 next값을 prev로 지정하므로써 역순의 리스트(prev)가 완성됨
+    return prev;
+}
